@@ -27,6 +27,27 @@ skim(iris)
 iris %>%
   dplyr::group_by(Species) %>%
   skim()
+#data visualisation
 
+plot(iris)
+plot(iris, col = "red")
+plot(iris$Petal.Length,iris$Sepal.Width)
+plot(iris$Petal.Length,iris$Sepal.Width,
+     xlab = "Petal Lenght", ylab = "Sepal Width")
 
+hist(iris$Sepal.Length, xlab = "Sepal Lenght")
 
+#feature plot
+install.packages("caret")
+install.packages("ggplot2")
+install.packages("lattice")
+library(ggplot2)
+library(lattice)
+library(caret)
+
+featurePlot(x = iris[,1:4],
+            y = iris$Species,
+            plot = "box",
+            strip = strip.custom(par.strip.text=list(cex=.7)),
+            scales = list(x = list(relation="free"),
+                          y =list(relation ="free")))
